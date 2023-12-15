@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+  </style>
+  <title>Dynamic Table</title>
+  <script>
+    let data = [
+      ["Data 1", "Data 2", "Data 3", "Data 4", "Data 5", "Data 6","data 7","data 8",],
+      ["Data 3", "Data 4"],
+      ["Data 5", "Data 6"]
+    ];
+
+    window.onload = function() {
+      let table = document.createElement("table");
+      let thead = document.createElement("thead");
+      let tbody = document.createElement("tbody");
+      let headers = ["route id", "flight id", "aircraft id", "flight date", "depature time", "remaining tickets", "flight status", "base price", "Book"];
+
+      // Create table headers
+      let tr = document.createElement("tr");
+      for (let i = 0; i < headers.length; i++) {
+        let th = document.createElement("th");
+        th.innerHTML = headers[i];
+        tr.appendChild(th);
+      }
+      thead.appendChild(tr);
+      table.appendChild(thead);
+
+      // Create table rows
+      for (let i = 0; i < data.length; i++) {
+        let tr = document.createElement("tr");
+        for (let j = 0; j < data[i].length; j++) {
+          let td = document.createElement("td");
+          td.innerHTML = data[i][j];
+          tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+      }
+      table.appendChild(tbody);
+
+      // Append the table to an HTML element
+      let container = document.getElementById("table-container");
+      container.appendChild(table);
+    }
+  </script>
+</head>
+<body>
+  <div id="table-container"></div>
+</body>
+</html>
